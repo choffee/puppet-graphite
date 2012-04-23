@@ -20,8 +20,19 @@ class graphite::install {
     }
   }
 
-  pipinstall {"carbon":
+  pipinstall {'carbon':
   }
-  pipinstall {"graphite-web":
+  pipinstall {'graphite-web':
+  }
+
+  file {'/etc/init.d/graphite':
+    source => 'puppet:///modules/graphite/graphite.init',
+    owner  => root,
+    group  => root,
+    mode   => '0544',
+  }
+
+  service {'graphite':
+    ensure => enabled,
   }
 }

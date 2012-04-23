@@ -2,8 +2,9 @@
 class graphite::params {
   case $operatingsystem {
     /Ubuntu|debian/: {
-      $foo=bar
-
+      $user    = 'graphite'
+      $group   = 'graphite'
+      $instdir = '/opt/graphite/'
     }
     default: {
       fail("Operatingsystem, $operatingsystem, is not supported by the graphite module")
