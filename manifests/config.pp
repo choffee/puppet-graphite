@@ -3,6 +3,7 @@ class graphite::config {
   $user    = $graphite::params::user
   $group   = $graphite::params::group
   $instdir = $graphite::params::instdir
+  $wwwuser = $graphite::params::wwwuser
 
   file {"${instdir}/conf/aggregation-rules.conf":
     content => template('graphite/aggregation-rules.conf.erb'),
@@ -59,15 +60,16 @@ class graphite::config {
     mode    => '0444',
   }
   file {"${instdir}/storage":
-    owner = 'www-data'
-    group = 'www-data'
+    owner = $wwwuser,
+    group = $wwwuser,
   }
 
   # Setup the database
   exec {'graphite-install-db':
     environment => ["PYTHONPATH=${instdir}/webapp:${instdir}/whisper"],
     cwd         => $instdir,
-    user        => 'www-data',
+    user        => $wwwuser,
+    # This prompts for a password and so won't work
     command     => '/usr/bin/python ./webapp/graphite/manage.py syncdb',
     refreshonly => true,
   }

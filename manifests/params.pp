@@ -5,6 +5,7 @@ class graphite::params {
       $user    = 'graphite'
       $group   = 'graphite'
       $instdir = '/opt/graphite/'
+      $wwwuser = 'www-data'
     }
     default: {
       fail("Operatingsystem, $operatingsystem, is not supported by the graphite module")
