@@ -1,9 +1,19 @@
 # Install the required packages for the graphite server
 class graphite::install {
+  $instdir = $graphite::params::instdir
+  $user    = $graphite::params::user
+
+  user {$user:
+    ensure => present,
+    system => true,
+    home   => $instdir,
+  }
+
   package { ['python-django',
              'python-twisted',
              'python-cairo',
              'python-pip',
+             'python-django-tagging',
              ]:
     ensure => installed,
   }
@@ -20,19 +30,24 @@ class graphite::install {
     }
   }
 
-  pipinstall {'carbon':
-  }
-  pipinstall {'graphite-web':
-  }
-
-  file {'/etc/init.d/graphite':
-    source => 'puppet:///modules/graphite/graphite.init',
-    owner  => root,
-    group  => root,
-    mode   => '0544',
+  pipinstall {['whisper',
+               'carbon',
+               'graphite-web']:
   }
 
-  service {'graphite':
-    ensure => enabled,
+  file { "${instdir}/storage/whisper/":
+    owner   => $user,
+    group   => $user,
+    mode    => '0755',
+    require => Pipinstall['whisper'],
+  }
+
+  # Install carbon-cache init service
+  file { '/etc/init.d/carbon-cache':
+    content => template('graphite/carbon-cache.init.erb'),
+    owner   => root,
+    group   => root,
+    mode    => '0744',
+    require => Pipinstall['carbon'],
   }
 }

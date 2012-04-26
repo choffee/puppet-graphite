@@ -58,12 +58,19 @@ class graphite::config {
     group   => root,
     mode    => '0444',
   }
+  file {"${instdir}/storage":
+    owner = 'www-data'
+    group = 'www-data'
+  }
 
   # Setup the database
   exec {'graphite-install-db':
     environment => ["PYTHONPATH=${instdir}/webapp:${instdir}/whisper"],
     cwd         => $instdir,
+    user        => 'www-data',
     command     => '/usr/bin/python ./webapp/graphite/manage.py syncdb',
-    runonce     => true,
+    refreshonly => true,
   }
+
+
 }
