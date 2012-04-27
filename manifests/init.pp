@@ -1,4 +1,5 @@
 # A module for installing and configuring a graphite server
+# (c) Copyright John Cooper - Licenced Under GPL Version 3
 class graphite {
   include graphite::params  
   include graphite::install 

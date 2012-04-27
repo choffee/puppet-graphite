@@ -1,9 +1,9 @@
 # Type: graphite::apache
+# (c) Copyright John Cooper - Licenced Under GPL Version 3
 #
 # add a site serving graphite,
 # This is a bit hacky as you probably want to set some thing up yourself
 # but this will do for testing
-
 define graphite::apache {
   $instdir    = $graphite::params::instdir
   $servername = $title

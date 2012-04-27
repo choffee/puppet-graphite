@@ -1,4 +1,5 @@
 # Global configuration variables for the graphite server.
+# (c) Copyright John Cooper - Licenced Under GPL Version 3
 class graphite::params {
   case $operatingsystem {
     /Ubuntu|debian/: {

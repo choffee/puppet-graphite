@@ -1,4 +1,5 @@
 # The generic graphite server config goes here
+# (c) Copyright John Cooper - Licenced Under GPL Version 3
 class graphite::config {
   $user    = $graphite::params::user
   $group   = $graphite::params::group
