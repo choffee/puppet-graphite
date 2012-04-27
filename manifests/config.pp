@@ -1,5 +1,18 @@
-# The generic graphite server config goes here
+# Class graphite::config
+#
+# The config for the graphite server config goes here
+#
+# Parameters:
+#
+# Actions:
+#
+# Requires:
+#
+# Sample Usage:
+#  This should not be used directly see the main module
+# 
 # (c) Copyright John Cooper - Licenced Under GPL Version 3
+# [Remember: No empty lines between comments and class definition]
 class graphite::config {
   $user    = $graphite::params::user
   $group   = $graphite::params::group
