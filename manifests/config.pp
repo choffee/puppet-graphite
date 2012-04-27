@@ -60,8 +60,8 @@ class graphite::config {
     mode    => '0444',
   }
   file {"${instdir}/storage":
-    owner = $wwwuser,
-    group = $wwwuser,
+    owner => $wwwuser,
+    group => $wwwuser,
   }
 
   # Setup the database
