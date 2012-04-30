@@ -21,8 +21,8 @@ class graphite {
   include graphite::config
   include graphite::service
 
-  Class["graphite::service"] ->
-  Class["graphite::config"] ->
+  Class["graphite::params"] ->
   Class["graphite::install"] ->
-  Class["graphite::params"]
+  Class["graphite::config"] ->
+  Class["graphite::service"] 
 }

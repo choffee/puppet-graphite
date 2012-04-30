@@ -50,6 +50,10 @@ class graphite::install {
                'graphite-web']:
   }
 
+  file {"${instdir}/storage":
+    owner => $wwwuser,
+    group => $wwwuser,
+  }
   file { "${instdir}/storage/whisper/":
     owner   => $user,
     group   => $user,

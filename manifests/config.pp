@@ -73,10 +73,6 @@ class graphite::config {
     group   => root,
     mode    => '0444',
   }
-  file {"${instdir}/storage":
-    owner => $wwwuser,
-    group => $wwwuser,
-  }
 
   # Setup the database
   exec {'graphite-install-db':
