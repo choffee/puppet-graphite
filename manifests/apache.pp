@@ -42,14 +42,14 @@ define graphite::apache {
   file {"${instdir}/storage/log/webapp":
     owner   => 'www-data',
     group   => 'www-data',
-    require => Package['apache2']
+    require => [Package['apache2'],Class['graphite::install']],
   }
   file {"${instdir}/storage/index":
     ensure  => present,
     owner   => 'www-data',
     group   => 'www-data',
     mode    => '0644',
-    require => Package['apache2']
+    require => [Package['apache2'],Class['graphite::install']],
   }
 
   # Service
