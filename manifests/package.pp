@@ -56,6 +56,11 @@ class graphite::package {
     ensure => $package_ensure,
   }
 
+  # Make sure augeas is installed
+  package { 'augeas-tools':
+    ensure => installed,
+  }
+
   # Create the graphite user
   user {$graphite::user:
     ensure => present,
