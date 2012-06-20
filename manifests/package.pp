@@ -62,10 +62,11 @@ class graphite::package {
   }
 
   # Create the graphite user
-  user {$graphite::user:
-    ensure => present,
-    home   => "${graphite::instdir}/storage",
-  }
+  # Remove this for now and let owner control this
+  #user {$graphite::user:
+  #  ensure => present,
+  #  home   => "${graphite::instdir}/storage",
+  #}
   # Wrapper around installing pip modules
   # Use with the pip module name to install
   # and testmodule is what is use to test if it is already
