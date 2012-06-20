@@ -72,7 +72,7 @@ class graphite::params {
       $user       = 'graphite'
       $group      = 'graphite'
       $instdir    = '/opt/graphite/'
-      $storagedir = "${instdir}/storage/'
+      $storagedir = "${instdir}/storage/"
       $wwwuser    = 'www-data'
     }
     # given OS is unknown (see http://j.mp/x6Mtba for a list of known values)
