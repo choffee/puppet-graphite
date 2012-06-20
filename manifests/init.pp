@@ -91,6 +91,9 @@
 #   can also define your own web server and user and this will set up
 #   permissions correctly for that.
 #
+# [*storagedir*]
+#   Override where whisper and graphite store their data
+#
 # [*debug*]
 #   Boolean switch to control the debugging functionality of this module. If set
 #   to <tt>true</tt>:
@@ -155,6 +158,7 @@ class graphite(
   $user           = $graphite::params::user,
   $group          = $graphite::params::group,
   $instdir        = $graphite::params::instdir,
+  $storagedir     = $graphite::params::storagedir,
   $wwwuser        = $graphite::params::wwwuser
 ) inherits graphite::params {
 

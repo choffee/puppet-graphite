@@ -23,10 +23,11 @@
 # * John Cooper <mailto:john@choffee.co.uk>
 #
 class graphite::config {
-  $user    = $graphite::user
-  $group   = $graphite::group
-  $instdir = $graphite::instdir
-  $wwwuser = $graphite::wwwuser
+  $user       = $graphite::user
+  $group      = $graphite::group
+  $instdir    = $graphite::instdir
+  $storagedir = $graphite::storagedir
+  $wwwuser    = $graphite::wwwuser
 
   file {"${instdir}/conf/aggregation-rules.conf":
     content => template('graphite/aggregation-rules.conf.erb'),
@@ -78,6 +79,12 @@ class graphite::config {
   }
   file {"${instdir}/conf/storage-schemas.conf":
     content => template('graphite/storage-schemas.conf.erb'),
+    owner   => root,
+    group   => root,
+    mode    => '0444',
+  }
+  file {"${instdir}/webapp/graphite/local_settings.py":
+    content => template('graphite/local_settings.py.erb'),
     owner   => root,
     group   => root,
     mode    => '0444',
