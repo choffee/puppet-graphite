@@ -7,6 +7,7 @@ Just clone the module into your directory then add the following to your host to
 
   user { 'graphite':
   }
+  include concat::setup
   include graphite
   graphite::apache{ "graphite.example.com": }
 
