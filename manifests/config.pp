@@ -77,12 +77,6 @@ class graphite::config {
     group   => root,
     mode    => '0444',
   }
-  file {"${instdir}/conf/storage-schemas.conf.d":
-    content => directory,
-    owner   => root,
-    group   => root,
-    mode    => '0555',
-  }
   concat{"${instdir}/conf/storage-schemas.conf": 
   }
   concat::fragment{"storage-schema.conf-default":
