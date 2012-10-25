@@ -92,11 +92,12 @@ class graphite::package {
     ensure => $package_ensure,
   }
 
-  file {"${graphite::instdir}/storage":
+  file {"${graphite::storagedir}":
     owner => $graphite::wwwuser,
     group => $graphite::wwwuser,
+    mode  => '0775',
   }
-  file { "${graphite::instdir}/storage/whisper/":
+  file { "${graphite::storagedir}/whisper/":
     owner   => $graphite::user,
     group   => $graphite::user,
     mode    => '0755',

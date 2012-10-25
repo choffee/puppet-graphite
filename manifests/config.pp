@@ -108,6 +108,12 @@ class graphite::config {
     unless  => "/usr/bin/test -f ${instdir}/storage/graphite.db",
   }
 
+  # Link to the expected location for log files
+  file {'/var/log/graphite':
+    ensure => link,
+    target => "${storagedir}/log",
+  }
+
 
   #### Configuration
 
