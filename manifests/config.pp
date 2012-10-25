@@ -77,11 +77,18 @@ class graphite::config {
     group   => root,
     mode    => '0444',
   }
-  file {"${instdir}/conf/storage-schemas.conf":
-    content => template('graphite/storage-schemas.conf.erb'),
+  file {"${instdir}/conf/storage-schemas.conf.d":
+    content => directory,
     owner   => root,
     group   => root,
-    mode    => '0444',
+    mode    => '0555',
+  }
+  concat{"${instdir}/conf/storage-schemas.conf": 
+  }
+  concat::fragment{"storage-schema.conf-default":
+    target  => "${instdir}/conf/storage-schemas.conf",
+    order   => 10,
+    content => template('graphite/storage-schemas.conf.erb'),
   }
   file {"${instdir}/webapp/graphite/local_settings.py":
     content => template('graphite/local_settings.py.erb'),

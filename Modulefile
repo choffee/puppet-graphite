@@ -7,6 +7,7 @@ description 'Manages the graphite graphing module'
 source 'UNKNOWN'
 project_page 'UNKNOWN'
 dependency 'puppetlabs-stdlib', '>= 2.3.1'
+dependency 'ripienaar/concat', '>= 0.2.0'
 
 
 # Available meta data fields/methods (q.v. <http://j.mp/I92C94>):
