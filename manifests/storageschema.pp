@@ -26,7 +26,12 @@
 #   important
 #   Defaults to 40
 #
-define graphite::storageschema ( $content, $order = 40, $ensure = 'present') {
+define graphite::storageschema (
+  $pattern,
+  $retentions,
+  $order = 40,
+  $ensure = 'present'
+) {
   if ! is_integer($order) {
     fail("order should be an integer not \"${order}\".")
   }
