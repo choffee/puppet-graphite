@@ -36,6 +36,7 @@ define graphite::storageschema (
     fail("order should be an integer not \"${order}\".")
   }
   concat::fragment{"storage-schema.conf-${name}":
+    ensure  => $ensure,
     target  => "${graphite::instdir}/conf/storage-schemas.conf",
     order   => $order,
     content => template('graphite/storage-schema.erb'),

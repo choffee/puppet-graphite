@@ -53,6 +53,7 @@ define graphite::storageaggregation (
     }
   }
   concat::fragment{"storage-aggregation.conf-${name}":
+    ensure  => $ensure,
     target  => "${graphite::instdir}/conf/storage-aggregation.conf",
     order   => $order,
     content => template('graphite/storage-aggregation.erb'),
