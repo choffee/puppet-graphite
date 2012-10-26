@@ -1,0 +1,12 @@
+# Schema definitions for whisper files. Entries are scanned in order,
+# and first match wins.
+#
+#  [name]
+#  pattern = regex
+#  retentions = timePerPoint:timeToStore, timePerPoint:timeToStore, ...
+
+[<%= name %>]
+pattern = <%= pattern %>
+xFilesFactor = <%= xfilesfactor %>
+aggregationMethod = <%= aggregationmethod %>
+

@@ -84,6 +84,8 @@ class graphite::config {
     order   => 10,
     content => template('graphite/storage-schemas.conf.erb'),
   }
+  concat{"${instdir}/conf/storage-aggregation.conf":
+  }
   file {"${instdir}/webapp/graphite/local_settings.py":
     content => template('graphite/local_settings.py.erb'),
     owner   => root,
