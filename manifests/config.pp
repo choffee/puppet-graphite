@@ -81,7 +81,7 @@ class graphite::config {
   }
   concat::fragment{"storage-schema.conf-default":
     target  => "${instdir}/conf/storage-schemas.conf",
-    order   => 10,
+    order   => 99,
     content => template('graphite/storage-schemas.conf.erb'),
   }
   concat{"${instdir}/conf/storage-aggregation.conf":
