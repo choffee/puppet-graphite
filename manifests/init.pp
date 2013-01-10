@@ -94,6 +94,9 @@
 # [*storagedir*]
 #   Override where whisper and graphite store their data
 #
+# [*max_updates_per_second*]
+#   Override the max updates per second for the whisper database
+#
 # [*debug*]
 #   Boolean switch to control the debugging functionality of this module. If set
 #   to <tt>true</tt>:
@@ -148,18 +151,19 @@
 # * John Cooper <mailto:john@choffee.co.uk>
 #
 class graphite(
-  $ensure         = $graphite::params::ensure,
-  $autoupgrade    = $graphite::params::autoupgrade,
-  $status         = $graphite::params::status,
-  $autoload_class = $graphite::params::autoload_class,
-  $package        = $graphite::params::package,
-  $pippackage     = $graphite::params::pippackage,
-  $debug          = $graphite::params::debug,
-  $user           = $graphite::params::user,
-  $group          = $graphite::params::group,
-  $instdir        = $graphite::params::instdir,
-  $storagedir     = $graphite::params::storagedir,
-  $wwwuser        = $graphite::params::wwwuser
+  $ensure                 = $graphite::params::ensure,
+  $autoupgrade            = $graphite::params::autoupgrade,
+  $status                 = $graphite::params::status,
+  $autoload_class         = $graphite::params::autoload_class,
+  $package                = $graphite::params::package,
+  $pippackage             = $graphite::params::pippackage,
+  $debug                  = $graphite::params::debug,
+  $user                   = $graphite::params::user,
+  $group                  = $graphite::params::group,
+  $instdir                = $graphite::params::instdir,
+  $storagedir             = $graphite::params::storagedir,
+  $wwwuser                = $graphite::params::wwwuser
+  $max_updates_per_second = $graphite::params::max_updates_per_second
 ) inherits graphite::params {
 
   #### Validate parameters

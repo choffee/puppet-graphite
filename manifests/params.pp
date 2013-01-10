@@ -58,6 +58,9 @@ class graphite::params {
   # autoload_class
   $autoload_class = false
 
+  # Max updates per second for the whisper database
+  $max_updates_per_second = 1000
+
   # package list
   case $::operatingsystem {
     'Debian', 'Ubuntu': {

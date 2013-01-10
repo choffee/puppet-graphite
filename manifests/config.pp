@@ -23,11 +23,12 @@
 # * John Cooper <mailto:john@choffee.co.uk>
 #
 class graphite::config {
-  $user       = $graphite::user
-  $group      = $graphite::group
-  $instdir    = $graphite::instdir
-  $storagedir = $graphite::storagedir
-  $wwwuser    = $graphite::wwwuser
+  $user                   = $graphite::user
+  $group                  = $graphite::group
+  $instdir                = $graphite::instdir
+  $storagedir             = $graphite::storagedir
+  $wwwuser                = $graphite::wwwuser
+  $max_updates_per_second = $graphite::max_updates_per_second
 
   file {"${instdir}/conf/aggregation-rules.conf":
     content => template('graphite/aggregation-rules.conf.erb'),
